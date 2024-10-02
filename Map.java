@@ -8,7 +8,7 @@ public class Map {
     private void createRooms() {
         Rooms rooms1 = new Rooms(
                 "the Entrance to the Forgotten Forest",
-                "You stand at the entrance to a dark and mysterious forest, with unknown paths ahead.",
+                "You stand at the entrance to a dark and mysterious forest, with unknown paths ahead. There's a distinct smell coming from the north",
                 "You've been here before, but the shadows seem to shift.",
                 "You see the letter 'A' glowing at your feet."
         );
@@ -24,7 +24,7 @@ public class Map {
                 "Within these ancient halls, shrouded in mystery and whispers of time, lies a sacred quest.\n"
                         + "Your mission, should you dare to embrace it, is to uncover the long-forgotten word, that holds the key to the secrets of this enchanted temple.\n"
                         + "Seek wisely, for the path ahead is fraught with enigmas and revelations that will guide you to the treasures of your heart's desire.\n"
-                        + "But beware, for darkness lurks in the shadows, and malevolent forces guard the paths you must 'T'read...",
+                        + "But beware, for darkness lurks in the shadows, and malevolent forces guard the paths you must tread...",
                 "You have been here before, and the air is thick with mystery.",
                 "You see the letter 'O' shining brightly on the ground, illuminating your path."
         );

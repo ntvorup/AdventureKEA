@@ -77,6 +77,7 @@ public class Rooms {
 
     public String getDescription() {
         StringBuilder desc = new StringBuilder();
+
         if (visited) {
             desc.append(letterFound ? foundDescription : seenDescription);
         } else {
@@ -86,10 +87,16 @@ public class Rooms {
 
         if (!items.isEmpty()) {
             desc.append("\nItems in this room: \n");
-            for (Items items : this.items) {
-                desc.append(items.getLongName()).append(", \n");
+            if (items.size() == 1) {
+                desc.append(items.get(0).getLongName());
+            } else {
+                for (int i = 0; i < items.size(); i++) {
+                    desc.append(items.get(i).getLongName());
+                    if (i < items.size() - 1) {
+                        desc.append(", \n");
+                    }
+                }
             }
-            desc.setLength(desc.length() - 2);
         } else {
             desc.append("\nThere are no items in this room.");
         }
