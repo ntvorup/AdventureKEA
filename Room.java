@@ -1,46 +1,44 @@
 import java.util.ArrayList;
-import java.util.HashMap;
 
-public class Rooms {
+public class Room {
     private boolean visited = false;
     private boolean letterFound = false;
     private String description;
     private String seenDescription;
     private String foundDescription;
     private String roomName;
-    private Rooms south, east, west, north;
+    private Room south, east, west, north;
     private boolean northLocked = false;
     private boolean eastLocked = false;
     private boolean southLocked = false;
     private boolean westLocked = false;
-    private ArrayList<Items> items = new ArrayList<>();
-    //private HashMap<String, Rooms> connectedRooms = new HashMap<>(); fix den senere
+    private ArrayList<Item> items = new ArrayList<>();
 
-    public Rooms(String name, String description, String seenDescription, String foundDescription) {
+    public Room(String name, String description, String seenDescription) {
         this.roomName = name;
         this.description = description;
         this.seenDescription = seenDescription;
         this.foundDescription = foundDescription;
     }
 
-    public void setExit(String direction, Rooms rooms) {
+    public void setExit(String direction, Room room) {
         switch (direction) {
             case "north":
-                this.north = rooms;
+                this.north = room;
                 break;
             case "east":
-                this.east = rooms;
+                this.east = room;
                 break;
             case "south":
-                this.south = rooms;
+                this.south = room;
                 break;
             case "west":
-                this.west = rooms;
+                this.west = room;
                 break;
         }
     }
 
-    public Rooms getRoomInDirection(String direction) {
+    public Room getRoomInDirection(String direction) {
         switch (direction) {
             case "north":
                 if (northLocked) {
@@ -86,7 +84,7 @@ public class Rooms {
         }
 
         if (!items.isEmpty()) {
-            desc.append("\nItems in this room: \n");
+            desc.append("\nItem in this room: \n");
             if (items.size() == 1) {
                 desc.append(items.get(0).getLongName());
             } else {
@@ -104,25 +102,21 @@ public class Rooms {
         return desc.toString();
     }
 
-    public void addItem(Items items) {
-        this.items.add(items);
+    public void addItem(Item item) {
+        this.items.add(item);
     }
 
-    public void removeItem(Items items) {
-        this.items.remove(items);
+    public void removeItem(Item item) {
+        this.items.remove(item);
     }
 
-    public Items findItem(String shortName) {
-        for (Items items : this.items) {
-            if (items.getShortName().equals(shortName)) {
-                return items;
+    public Item findItem(String shortName) {
+        for (Item item : this.items) {
+            if (item.getShortName().equals(shortName)) {
+                return item;
             }
         }
         return null;
-    }
-
-    public void findLetter() {
-        letterFound = true;
     }
 
     public void lockNorth() {

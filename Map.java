@@ -1,156 +1,156 @@
 public class Map {
-    private Rooms startRooms;
+    private Room startRoom;
 
     public Map() {
         createRooms();
     }
 
     private void createRooms() {
-        Rooms rooms1 = new Rooms(
+        Room room1 = new Room(
                 "the Entrance to the Forgotten Forest",
                 "You stand at the entrance to a dark and mysterious forest, with unknown paths ahead. There's a distinct smell coming from the north",
-                "You've been here before, but the shadows seem to shift.",
-                "You see the letter 'A' glowing at your feet."
+                "You've been here before, but the shadows seem to shift."
         );
-        Rooms rooms2 = new Rooms(
+        Room room2 = new Room(
                 "the Echoing Cavern",
                 "A large, echoing cavern where your footsteps resonate. Traces of lost adventurers can be seen on the walls.",
-                "You can hear whispers echoing around you.",
-                "The letter 'L' shines softly in the darkness."
+                "You can hear whispers echoing around you."
         );
 
-        Rooms rooms3 = new Rooms(
+        Room room3 = new Room(
                 "the Entrance to the Forgotten Temple",
                 "Within these ancient halls, shrouded in mystery and whispers of time, lies a sacred quest.\n"
                         + "Your mission, should you dare to embrace it, is to uncover the long-forgotten word, that holds the key to the secrets of this enchanted temple.\n"
                         + "Seek wisely, for the path ahead is fraught with enigmas and revelations that will guide you to the treasures of your heart's desire.\n"
                         + "But beware, for darkness lurks in the shadows, and malevolent forces guard the paths you must tread...",
-                "You have been here before, and the air is thick with mystery.",
-                "You see the letter 'O' shining brightly on the ground, illuminating your path."
+                "You have been here before, and the air is thick with mystery."
         );
-        Rooms rooms4 = new Rooms(
+        Room room4 = new Room(
                 "the Chamber of Light and Darkness",
                 "Everything here is consumed by total darkness. The air feels cold and empty, with no walls or shapes in sight.\n"
                         + "A whisper echoes in the abyss:\n"
                         + "'In the darkness, there is nothing, but when the light is turned on, the truth is revealed.'\n"
                         + "\nWhat will you do?",
-                "You are in a chamber filled with shadows and uncertainty.",
-                "You notice a letter 'H' glowing faintly, waiting to be discovered."
+                "You are in a chamber filled with shadows and uncertainty."
         );
 
-        Rooms rooms5 = new Rooms(
+        Room room5 = new Room(
                 "the Hall of Locks and Keys",
                 "The room is cluttered with locked chests, each one seemingly guarding a secret. A faint inscription on the wall reads:\n"
                         + "The path is revealed by the order in which you unlock.\n"
                         + "\nWhat will you do?",
-                "You have revisited this hall filled with mysteries.",
-                "A letter 'O' lies on a dusty shelf, catching your eye."
+                "You have revisited this hall filled with mysteries."
         );
 
-        Rooms rooms6 = new Rooms(
+        Room room6 = new Room(
                 "the Pool of Reflections",
                 "The room is dimly lit, dominated by a mysterious pool of water at its center. Inscribed on the wall are the words:\n"
                         + "'When you gaze into the depths, your answer will be reflected back.'\n"
                         + "\nWhat will you do?",
-                "You've stood by this pool before, pondering its secrets.",
-                "A shimmering letter 'M' floats just beneath the surface of the water."
+                "You've stood by this pool before, pondering its secrets."
         );
 
-        Rooms rooms7 = new Rooms(
+        Room room7 = new Room(
                 "the Sealed Vault",
-                "",
                 "",
                 ""
         );
 
-        Rooms rooms8 = new Rooms(
+        Room room8 = new Room(
                 "the Chamber of Time",
                 "As you enter the room, you are greeted by the sight of large, ornate clocks ticking loudly, each set to a different time.\n"
                         + "The air is thick with tension, as a voice echoes through the chamber, announcing that you have 2 minutes to solve a riddle.\n"
                         + "Should you fail, the consequences will be dire.\n"
                         + "\nWhat will you do?",
-                "You can feel the weight of time pressing down on you.",
-                "O"
+                "You can feel the weight of time pressing down on you."
         );
 
-        Rooms rooms9 = new Rooms(
+        Room room9 = new Room(
                 "the Forgotten Library",
                 "This room is lined with towering shelves filled with ancient, dust-covered books. Somewhere among them lies an old tome containing a cryptic message.\n"
                         + "\nWhat will you do?",
-                "You feel a sense of nostalgia in this library of forgotten knowledge.",
-                "A letter 'R' is tucked between the pages of an ancient book."
+                "You feel a sense of nostalgia in this library of forgotten knowledge."
         );
 
-        Rooms rooms10 = new Rooms(
+        Room room10 = new Room(
                 "the Hidden Passage",
                 "This stone chamber features a locked passage to the north, barring the way forward.\n"
                         + "Strange symbols are etched around the doorframe, as if hinting at some secret mechanism.\n"
                         + "You sense that the key to unlocking the door may lie in the fragments you've been gathering.\n"
                         + "\nThe answer seems to be just within reach...",
-                "You've returned to this hidden chamber, pondering its secrets.",
-                ""
+                "You've returned to this hidden chamber, pondering its secrets."
         );
 
-        Rooms rooms11 = new Rooms(
+        Room room11 = new Room(
                 "the Chamber of the Last Revelation",
                 "The room is quiet, a dimly lit room, its air thick with anticipation. At its center, an ancient pedestal holds a small, glowing object.\n"
                         + "\nWhat will you do?",
-                "You've entered this chamber before, feeling the weight of the moment.",
-                "A letter 'A' rests on the pedestal, radiating light."
+                "You've entered this chamber before, feeling the weight of the moment."
         );
 
-        Items torch = new Items("the torch of eternal flame", "torch");
-        Items book = new Items("a dusty old book", "book");
-        Items scroll = new Items("a fragile parchment with faded symbols", "scroll");
-        Items orb = new Items("a glowing orb", "orb");
-        Items chalice = new Items("an intricately designed silver chalice", "chalice");
-        Items leftAmulet = new Items("the left side of a gemstone amulet, split down the middle", "amulet");
-        Items rightAmulet = new Items("the right side of a gemstone amulet, split down the middle", "amulet");
+        Item torch = new Item("the torch of eternal flame", "torch");
+        Item book = new Item("a dusty old book", "book");
+        Item scroll = new Item("a fragile parchment with faded symbols", "scroll");
+        Item orb = new Item("a glowing orb", "orb");
+        Item chalice = new Item("an intricately designed silver chalice", "chalice");
+        Item leftAmulet = new Item("the left side of a gemstone amulet, split down the middle", "amulet");
+        Item rightAmulet = new Item("the right side of a gemstone amulet, split down the middle", "amulet");
+        Food apple = new Food("a juicy red apple", "apple", 10);
+        Food poisonedBerry = new Food("a handful of suspicious berries", "berries", -20);
+        Food jerky = new Food("a dry piece of beef jerky", "jerky meat", 25);
+        Weapon sword = new MeleeWeapon("shiny sword","sword");
+        Weapon bow = new RangedWeapon("old bow", "bow", 15);
 
-        rooms3.addItem(torch);
-        rooms7.addItem(book);
-        rooms4.addItem(chalice);
-        rooms8.addItem(scroll);
-        rooms9.addItem(orb);
-        rooms6.addItem(leftAmulet);
-        rooms2.addItem(rightAmulet);
 
-        connectRooms(rooms1, "north", rooms2);
-        connectRooms(rooms2, "east", rooms3);
-        connectRooms(rooms3, "east", rooms4);
-        connectRooms(rooms3, "south", rooms6);
-        connectRooms(rooms4, "east", rooms5);
-        connectRooms(rooms5, "south", rooms8);
-        connectRooms(rooms6, "south", rooms9);
-        connectRooms(rooms7, "south", rooms10);
-        connectRooms(rooms8, "south", rooms11);
-        connectRooms(rooms9, "east", rooms10);
-        connectRooms(rooms10, "east", rooms11);
+        room2.addItem(sword);
+        room4.addItem(bow);
+        room3.addItem(apple);
+        room1.addItem(poisonedBerry);
+        room5.addItem(jerky);
+        room3.addItem(torch);
+        room7.addItem(book);
+        room4.addItem(chalice);
+        room8.addItem(scroll);
+        room9.addItem(orb);
+        room6.addItem(leftAmulet);
+        room2.addItem(rightAmulet);
 
-        rooms10.lockNorth();
+        connectRooms(room1, "north", room2);
+        connectRooms(room2, "east", room3);
+        connectRooms(room3, "east", room4);
+        connectRooms(room3, "south", room6);
+        connectRooms(room4, "east", room5);
+        connectRooms(room5, "south", room8);
+        connectRooms(room6, "south", room9);
+        connectRooms(room7, "south", room10);
+        connectRooms(room8, "south", room11);
+        connectRooms(room9, "east", room10);
+        connectRooms(room10, "east", room11);
 
-        startRooms = rooms1;
+        room10.lockNorth();
+
+        startRoom = room1;
     }
 
-    private void connectRooms(Rooms rooms1, String direction, Rooms rooms2) {
-        rooms1.setExit(direction, rooms2);
+    private void connectRooms(Room room1, String direction, Room room2) {
+        room1.setExit(direction, room2);
         switch (direction) {
             case "north":
-                rooms2.setExit("south", rooms1);
+                room2.setExit("south", room1);
                 break;
             case "south":
-                rooms2.setExit("north", rooms1);
+                room2.setExit("north", room1);
                 break;
             case "east":
-                rooms2.setExit("west", rooms1);
+                room2.setExit("west", room1);
                 break;
             case "west":
-                rooms2.setExit("east", rooms1);
+                room2.setExit("east", room1);
                 break;
         }
     }
 
-    public Rooms getStartRoom() {
-        return startRooms;
+    public Room getStartRoom() {
+        return startRoom;
     }
 }

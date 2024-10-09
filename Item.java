@@ -1,8 +1,8 @@
-public class Items {
+public class Item {
     private String longName;
     private String shortName;
 
-    public Items(String longName, String shortName) {
+    public Item(String longName, String shortName) {
         this.longName = longName;
         this.shortName = shortName;
     }
