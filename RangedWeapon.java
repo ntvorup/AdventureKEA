@@ -1,8 +1,8 @@
 public class RangedWeapon extends Weapon {
     private int ammo;
 
-    public RangedWeapon(String longName, String shortName, int ammo) {
-        super(longName, shortName);
+    public RangedWeapon(String longName, String shortName, int damage, int ammo) {
+        super(longName, shortName, damage);
         this.ammo = ammo;
     }
 
@@ -17,11 +17,11 @@ public class RangedWeapon extends Weapon {
             ammo--;
             System.out.println("You shoot with the " + getLongName() + ". Remaining ammo: " + ammo);
         } else {
-            System.out.println("You have run out of ammo for the " + getLongName() + "!");
+            System.out.println("No ammo left for " + getLongName() + "!");
         }
     }
 
-    public int remainingUses() {
+    public int getAmmo() {
         return ammo;
     }
 }

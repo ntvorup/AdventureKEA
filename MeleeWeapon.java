@@ -1,11 +1,12 @@
 public class MeleeWeapon extends Weapon {
-    public MeleeWeapon(String longName, String shortName) {
-        super(longName, shortName);
+
+    public MeleeWeapon(String longName, String shortName, int damage) {
+        super(longName, shortName, damage);
     }
 
     @Override
     public boolean canUse() {
-        return true; // Melee weapons can always be used
+        return true;  // Melee weapons can always be used
     }
 
     @Override

@@ -1,5 +1,5 @@
 public class Food extends Item {
-    private int healthPoints;
+    private int healthPoints;  // Amount of health the food restores
 
     public Food(String longName, String shortName, int healthPoints) {
         super(longName, shortName);
@@ -8,11 +8,5 @@ public class Food extends Item {
 
     public int getHealthPoints() {
         return healthPoints;
-    }
-
-    @Override
-    public String toString() {
-        String effect = healthPoints > 0 ? "Restores " + healthPoints + " health." : "Reduces health by " + Math.abs(healthPoints) + "!";
-        return super.getLongName() + " (" + effect + ")";
     }
 }

@@ -1,129 +1,135 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Room {
-    private boolean visited = false;
-    private boolean letterFound = false;
+    private String name;
     private String description;
-    private String seenDescription;
-    private String foundDescription;
-    private String roomName;
-    private Room south, east, west, north;
-    private boolean northLocked = false;
-    private boolean eastLocked = false;
-    private boolean southLocked = false;
-    private boolean westLocked = false;
-    private ArrayList<Item> items = new ArrayList<>();
+    private String revisitedDescription;
+    private HashMap<String, Room> exits;
+    private ArrayList<Item> items;  // List of items in the room
+    private ArrayList<Enemy> enemies;  // List of enemies in the room
+    private boolean hasSadStatue = false;
 
-    public Room(String name, String description, String seenDescription) {
-        this.roomName = name;
+    public Room(String name, String description, String revisitedDescription) {
+        this.name = name;
         this.description = description;
-        this.seenDescription = seenDescription;
-        this.foundDescription = foundDescription;
+        this.revisitedDescription = revisitedDescription;
+        this.exits = new HashMap<>();
+        this.items = new ArrayList<>();  // Initialize items
+        this.enemies = new ArrayList<>();  // Initialize enemies
     }
 
-    public void setExit(String direction, Room room) {
-        switch (direction) {
-            case "north":
-                this.north = room;
-                break;
-            case "east":
-                this.east = room;
-                break;
-            case "south":
-                this.south = room;
-                break;
-            case "west":
-                this.west = room;
-                break;
-        }
+    public void setExit(String direction, Room neighbor) {
+        exits.put(direction, neighbor);
     }
 
     public Room getRoomInDirection(String direction) {
-        switch (direction) {
-            case "north":
-                if (northLocked) {
-                    System.out.println("The door to the north is locked.");
-                    return null;
-                }
-                return north;
-            case "east":
-                if (eastLocked) {
-                    System.out.println("The door to the east is locked.");
-                    return null;
-                }
-                return east;
-            case "south":
-                if (southLocked) {
-                    System.out.println("The door to the south is locked.");
-                    return null;
-                }
-                return south;
-            case "west":
-                if (westLocked) {
-                    System.out.println("The door to the west is locked.");
-                    return null;
-                }
-                return west;
-            default:
-                return null;
-        }
+        return exits.get(direction);
     }
 
     public String getName() {
-        return roomName;
+        return name;
     }
 
-    public String getDescription() {
-        StringBuilder desc = new StringBuilder();
-
-        if (visited) {
-            desc.append(letterFound ? foundDescription : seenDescription);
-        } else {
-            visited = true;
-            desc.append(description);
-        }
+    public String getRoomDescription() {
+        StringBuilder details = new StringBuilder();
+        details.append(description).append("\n");
 
         if (!items.isEmpty()) {
-            desc.append("\nItem in this room: \n");
-            if (items.size() == 1) {
-                desc.append(items.get(0).getLongName());
-            } else {
-                for (int i = 0; i < items.size(); i++) {
-                    desc.append(items.get(i).getLongName());
-                    if (i < items.size() - 1) {
-                        desc.append(", \n");
-                    }
-                }
+            details.append("You see the following items:\n");
+            for (Item item : items) {
+                details.append("- ").append(item.getLongName()).append("\n");
             }
-        } else {
-            desc.append("\nThere are no items in this room.");
         }
 
-        return desc.toString();
+        if (!enemies.isEmpty()) {
+            details.append("You see the following enemies:\n");
+            for (Enemy enemy : enemies) {
+                details.append("- ").append(enemy.getName()).append("\n");
+            }
+        }
+
+        return details.toString();
+    }
+
+    public String getRevisitedDescription() {
+        return revisitedDescription;
     }
 
     public void addItem(Item item) {
-        this.items.add(item);
+        items.add(item);
     }
 
     public void removeItem(Item item) {
-        this.items.remove(item);
+        items.remove(item);
     }
 
-    public Item findItem(String shortName) {
-        for (Item item : this.items) {
-            if (item.getShortName().equals(shortName)) {
+    public Item findItem(String itemName) {
+        for (Item item : items) {
+            if (item.getShortName().equalsIgnoreCase(itemName)) {
                 return item;
             }
         }
         return null;
     }
 
-    public void lockNorth() {
-        northLocked = true;
+    public ArrayList<Enemy> getEnemies() {
+        return enemies;
     }
 
-    public void unlockNorth() {
-        northLocked = false;
+    public Enemy findEnemy(String enemyName) {
+        for (Enemy enemy : enemies) {
+            if (enemy.getName().toLowerCase().contains(enemyName.toLowerCase())) {
+                return enemy;
+            }
+        }
+        return null;
+    }
+
+    public void addEnemy(Enemy enemy) {
+        enemies.add(enemy);
+    }
+
+    public void removeEnemy(Enemy enemy) {
+        enemies.remove(enemy);
+    }
+
+    public String getRoomDetails(Player player) {
+        StringBuilder details = new StringBuilder();
+        details.append(description).append("\n");
+
+        if (!items.isEmpty()) {
+            details.append("You see the following items:\n");
+            for (Item item : items) {
+                details.append("- ").append(item.getLongName()).append("\n");
+            }
+        }
+
+        if (!enemies.isEmpty()) {
+            details.append("You see the following enemies:\n");
+            for (Enemy enemy : enemies) {
+                details.append("- ").append(enemy.getName()).append("\n");
+            }
+        }
+
+        if (hasSadStatue) {
+            if (player.hasAllArtifacts()) {
+                details.append("You completed the quest and is rewarded 1 million beers! Feel free to roam the temple, or exit my temple, by typing 'exit'.\n");
+            } else {
+                details.append("The statue looks sad. It seems to be missing important artifacts.\n");
+            }
+        }
+        return details.toString();
+    }
+
+    public String getExitsDescription() {
+        if (exits.isEmpty()) {
+            return "";  // No exits
+        }
+        return String.join(" & ", exits.keySet());
+    }
+
+    public void setHasSadStatue(boolean hasSadStatue) {
+        this.hasSadStatue = hasSadStatue;
     }
 }

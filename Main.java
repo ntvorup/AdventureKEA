@@ -1,7 +1,7 @@
 public class Main {
     public static void main(String[] args) {
-        Adventure adventure = new Adventure(new Map());
+        Adventure adventure = new Adventure();
         UI ui = new UI(adventure);
-        ui.start();
+        ui.startGame();
     }
 }
